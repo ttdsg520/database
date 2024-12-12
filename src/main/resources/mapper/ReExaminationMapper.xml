@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.db.mapper.ReExaminationMapper">
+    <insert id="insert">
+        INSERT INTO `review_exam_form` (`interview_subject_name`,
+                                        `admission_ticket_number`,
+                                        `name`,
+                                        `gender`,
+                                        `candidate_category`,
+                                        `student_type`,
+                                        `undergraduate_school`,
+                                        `graduation_date`,
+                                        `undergraduate_major`,
+                                        `phone`,
+                                        `emergency_contact_phone`,
+                                        `preferred_mentor_1`,
+                                        `preferred_mentor_2`,
+                                        `preferred_mentor_3`,
+                                        `proposed_research_direction`,
+                                        `accept_direction_adjustment`,
+                                        `adjustment_priority_1`,
+                                        `adjustment_priority_2`,
+                                        `adjustment_priority_3`,
+                                        `adjustment_priority_4`,
+                                        `signature`,
+                                        `status`,
+                                        `created_at`)
+        VALUES (#{interviewSubjectName},
+                #{admissionTicketNumber},
+                #{name},
+                #{gender},
+                #{candidateCategory},
+                #{studentType},
+                #{undergraduateSchool},
+                #{graduationDate},
+                #{undergraduateMajor},
+                #{phone},
+                #{emergencyContactPhone},
+                #{preferredMentor1},
+                #{preferredMentor2},
+                #{preferredMentor3},
+                #{proposedResearchDirection},
+                #{acceptDirectionAdjustment},
+                #{adjustmentPriority1},
+                #{adjustmentPriority2},
+                #{adjustmentPriority3},
+                #{adjustmentPriority4},
+                #{signature},
+                #{status},
+                #{createdAt});
+    </insert>
+
+    <update id="updateStatus">
+        UPDATE review_exam_form
+        SET status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.jack.controller.dto.ReExaminationDTO">
+        SELECT `id`,
+               `interview_subject_name`      AS interviewSubjectName,
+               `admission_ticket_number`     AS admissionTicketNumber,
+               `name`,
+               `gender`,
+               `candidate_category`          AS candidateCategory,
+               `student_type`                AS studentType,
+               `undergraduate_school`        AS undergraduateSchool,
+               `graduation_date`             AS graduationDate,
+               `undergraduate_major`         AS undergraduateMajor,
+               `phone`,
+               `emergency_contact_phone`     AS emergencyContactPhone,
+               `preferred_mentor_1`          AS preferredMentor1,
+               `preferred_mentor_2`          AS preferredMentor2,
+               `preferred_mentor_3`          AS preferredMentor3,
+               `proposed_research_direction` AS proposedResearchDirection,
+               `accept_direction_adjustment` AS acceptDirectionAdjustment,
+               `signature`,
+               `status`,
+               `created_at`                  AS createdAt
+        FROM `review_exam_form`
+        WHERE `id` = #{id};
+    </select>
+</mapper>

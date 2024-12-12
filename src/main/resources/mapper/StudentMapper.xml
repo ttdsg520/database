@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.db.mapper.StudentMapper">
+
+    <insert id="generateStudentInfo">
+        INSERT INTO student (student_name, student_id, college_id, major_id, retest_id, status)
+        VALUES (#{studentName}, #{studentId}, #{collegeId}, #{majorId}, #{retestId}, #{status})
+    </insert>
+
+    <select id="selectByUserId" resultType="com.jack.controller.dto.StudentDTO">
+        SELECT student_id, student_name, college_id, major_id, retest_id, status
+        FROM student
+        WHERE student_id = #{studentId}
+    </select>
+
+    <select id="selectStudentListByMajorId" resultType="com.jack.controller.dto.StudentDTO">
+        SELECT student_id, student_name, college_id, major_id, retest_id, status
+        FROM student
+        WHERE major_id = #{majorId}
+    </select>
+
+    <select id="selectStudentListByMentorId" resultType="com.jack.controller.dto.StudentDTO">
+        SELECT student_id, student_name, college_id, mentor_id, major_id, retest_id, status
+        FROM student
+        WHERE mentor_id = #{mentorId}
+    </select>
+</mapper>

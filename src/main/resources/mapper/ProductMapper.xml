@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.db.mapper.StudentMapper">
+
+    <!-- 插入学生信息 -->
+    <insert id="insertStudent" parameterType="com.jack.db.pojo.Student" useGeneratedKeys="true"
+            keyProperty="studentId">
+        INSERT INTO students (name, birth_date, gender, major, enrollment_date, email, phone_number)
+        VALUES (#{name}, #{birthDate}, #{gender}, #{major}, #{enrollmentDate}, #{email}, #{phoneNumber})
+    </insert>
+
+
+
+    <!-- 根据学生ID删除学生信息 -->
+    <delete id="deleteStudentById" parameterType="int">
+        DELETE
+        FROM students
+        WHERE student_id = #{studentId}
+    </delete>
+
+
+
+    <!-- 更新学生信息 -->
+    <update id="updateStudent" parameterType="com.jack.db.pojo.Student">
+        UPDATE students
+        SET name            = #{name},
+            birth_date      = #{birthDate},
+            gender          = #{gender},
+            major           = #{major},
+            enrollment_date = #{enrollmentDate},
+            email           = #{email},
+            phone_number    = #{phoneNumber}
+        WHERE student_id = #{studentId}
+    </update>
+
+
+
+    <!-- 根据学生ID查询学生信息 -->
+    <select id="getStudentById" parameterType="int" resultType="com.jack.db.pojo.Student">
+        SELECT *
+        FROM students
+        WHERE student_id = #{studentId}
+    </select>
+
+
+
+    <!-- 查询所有学生信息 -->
+    <select id="getAllStudents" resultType="com.jack.db.pojo.Student">
+        SELECT *
+        FROM students
+    </select>
+</mapper>

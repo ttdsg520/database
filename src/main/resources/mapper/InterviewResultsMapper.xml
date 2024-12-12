@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jack.db.mapper.InterviewResultsMapper">
+
+
+    <insert id="insert">
+        INSERT INTO `interview_results` (
+            `review_exam_form_id`,
+            `interview_time_and_location`,
+            `evaluation`,
+            `interview_leader_signature`,
+            `listening_speaking_score`,
+            `professional_knowledge_score`,
+            `comprehensive_quality_score`,
+            `total_score`,
+            `interview_member_signatures`,
+            `proposed_mentor_signature`
+        ) VALUES (
+            #{reviewExamFormId},
+            #{interviewTimeAndLocation},
+            #{evaluation},
+            #{interviewLeaderSignature},
+            #{listeningSpeakingScore},
+            #{professionalKnowledgeScore},
+            #{comprehensiveQualityScore},
+            #{totalScore},
+            #{interviewMemberSignatures},
+            #{proposedMentorSignature}
+        )
+    </insert>
+</mapper>

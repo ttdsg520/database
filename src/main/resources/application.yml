@@ -1,0 +1,55 @@
+server:
+  port: 8082
+
+  tomcat:
+    uri-encoding: UTF-8
+    threads:
+      max: 200
+      min-spare: 30
+    connection-timeout: 5000ms
+
+spring:
+
+  # 数据源的相关配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver      # mysql/MariaDB 的数据库驱动类名称
+    url: jdbc:mysql://47.119.173.36:3307/two_wayselection?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true&rewriteBatchedStatements=true&serverTimezone=GMT%2b8
+    username: root
+    password: test123456
+
+
+    # 指定 druid 连接池以及 druid 连接池配置
+    type: com.alibaba.druid.pool.DruidDataSource
+
+
+  druid:
+    initial-size: 1                       # 初始连接数
+    max-active: 20                        # 最大连接数
+    max-idle: 20                          # 最大空闲
+    min-idle: 1                           # 最小空闲
+    max-wait: 60000                       # 最长等待时间
+
+
+
+
+
+mybatis:
+  mapper-locations: classpath*:/mapper/*.xml
+  type-aliases-package: com.xxx.db.mapper
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+
+
+## 日志级别
+logging:
+  level:
+    root: info
+    com.redisDemo: debug
+  pattern:
+    console: "%d{HH:mm:ss}  %-5level  %msg%n"
+
+
+
